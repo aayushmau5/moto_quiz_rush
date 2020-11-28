@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizrush</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="game.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="quiz">
+        <h3 class="question">Question</h3>
+        <div class="answers">
+          <input type="radio" id="left"  name="answers" class="left" value="left" />
+          <span class="left-answer">A</span>
+          <input type="radio" id="right" name="answers"  class="right" value="right" />
+          <span class="right-answer">B</span>
+        </div>
+        <button class="submit">Submit</button>
+      </div>
+      <div class="game-container">
+        <div id="game">
+      <div id="road">
+        <div id="cloud"></div>
+        <div id="hero"></div>
+      </div>
+
+      <div id="hud">
+        <span id="time" class="topUI">0</span>
+        <span id="score" class="topUI">0</span>
+        <span id="lap" class="topUI">0'00"000</span>
+        <span id="tacho">0</span>
+      </div>
+
+      <div id="home">
+        <h1>OutRun</h1>
+        <p id="text"></p>
+
+        <div id="highscore"></div>
+      </div>
+    </div>
+
+    <div id="controls">
+      <span><span>C</span>insert coin</span>
+      <span><span>M</span>mute</span>
+      <span><span><</span><span>></span>move</span>
+      <span><span><</span><span>></span>accelerate</span>
+    </div>
+      </div>
+    </div>
+    <script src="./game.js"></script>
+    <script src="./gameScript.js"></script>
+  </body>
+</html>
