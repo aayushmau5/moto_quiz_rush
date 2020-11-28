@@ -1,0 +1,24 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: orange;
+}
+
+.quiz {
+  margin: auto;
+  border: 3px solid orangered;
+  border-radius: 15px;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 50%;
+  text-align: center;
+}
+
+.submit {
+  outline: none;
+  border: 1px solid white;
+  background-color: orangered;
+  color:white;
+  border-radius: 2px;
+  padding: 5px 15px;
+  font-size: 18px;
+}
