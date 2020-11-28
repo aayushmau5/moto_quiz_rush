@@ -12,6 +12,36 @@ const ASSETS = {
       width: 132,
       height: 192
     },
+    TREE2: {
+      src: 'assets/tree2.png',
+      width: 132,
+      height: 112
+    },
+    LLAMP: {
+      src: 'assets/street_lamp_left.png',
+      width: 132,
+      height: 192
+    },
+    RLAMP: {
+      src: 'assets/street_lamp_right.png',
+      width: 132,
+      height: 192
+    },
+    COW: {
+      src: 'assets/cow.png',
+      width: 352 ,
+      height: 210
+    },
+    SAUCER: {
+      src: 'assets/saucer.png',
+      width: 512,
+      height: 264
+    },
+    SPACEX: {
+      src: 'assets/spacex.png',
+      width: 354,
+      height: 1294
+    },
     HERO: {
       src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/hero.png',
       width: 110,
@@ -22,6 +52,21 @@ const ASSETS = {
       width: 60,
       height: 40
     },
+    CAR2: {
+      src: 'assets/car2.png',
+      width: 60,
+      height: 30
+    },
+    CAR3: {
+      src: 'assets/car3.png',
+      width: 60,
+      height: 40
+    },
+    BUS: {
+      src: 'assets/bus.png',
+      width: 60,
+      height: 80
+    },
     FINISH: {
       src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/155629/finish.png',
       width: 339,
@@ -29,7 +74,7 @@ const ASSETS = {
       offset: -.5
     },
     SKY: {
-      src: 'https://www.epicentrofestival.com/wp-content/uploads/2020/01/epicentrofestival-cartoon-cloud-animation-clip-art-clouds-cartoon-bnlk325udf-720x352.jpg'
+      src: 'assets/scene.webp'
     }
   },
     
@@ -507,8 +552,19 @@ function update(step) {
     l.clearSprites()
 
     // first draw section assets
-    if(n % 10 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE, -2)
-    if((n + 5) % 10 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE, 1.3)
+    if(n % 7  === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE, -3)
+    if((n + 5) % 7 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE, 2.3)
+
+    if(n % 21  === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE2, -3)
+    if((n + 5) % 21 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.TREE2, 2.3)
+
+    if(n % 33  === 0) l.drawSprite(level, 0, ASSETS.IMAGE.COW, 4)
+    if(n % 66  === 0) l.drawSprite(level, 0, ASSETS.IMAGE.SPACEX, -6)
+    if(n % 124  === 0) l.drawSprite(level, 0, ASSETS.IMAGE.SAUCER, 3)
+
+    if(n % 10 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.LLAMP, -2)
+    if((n + 5) % 10 === 0) l.drawSprite(level, 0, ASSETS.IMAGE.RLAMP, 1.3)
+
 
     if(l.special) l.drawSprite(level, 0, l.special, l.special.offset||0)
 
@@ -596,12 +652,12 @@ function init() {
   audio = new Audio
   Object.keys(ASSETS.AUDIO).forEach(key => audio.load(ASSETS.AUDIO[key], key, _=>0))
 
-  cars.push(new Car(0, ASSETS.IMAGE.CAR, LANE.C))
-  cars.push(new Car(10, ASSETS.IMAGE.CAR, LANE.B))
-  cars.push(new Car(20, ASSETS.IMAGE.CAR, LANE.C))
+  cars.push(new Car(0, ASSETS.IMAGE.CAR2, LANE.C))
+  cars.push(new Car(10, ASSETS.IMAGE.CAR3, LANE.B))
+  cars.push(new Car(20, ASSETS.IMAGE.BUS, LANE.C))
   cars.push(new Car(35, ASSETS.IMAGE.CAR, LANE.C))
-  cars.push(new Car(50, ASSETS.IMAGE.CAR, LANE.A))
-  cars.push(new Car(60, ASSETS.IMAGE.CAR, LANE.B))
+  cars.push(new Car(50, ASSETS.IMAGE.CAR3, LANE.A))
+  cars.push(new Car(60, ASSETS.IMAGE.CAR2, LANE.B))
   cars.push(new Car(70, ASSETS.IMAGE.CAR, LANE.A))
 
   for (let i = 0; i < N; i++) {
