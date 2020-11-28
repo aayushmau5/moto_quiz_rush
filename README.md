@@ -1,15 +1,16 @@
 # Moto Quiz Rush
+A race game with a twist of quiz.
 
 ### TODO
 
-[ ] Random order of answers
+- [ ] Random order of answers
 
-[ ] Pause functionality
+- [ ] Pause functionality
 
-[ ] Landing Page
+- [ ] Landing Page
 
-[ ] Overall theming of the website
+- [ ] Overall theming of the website
 
-[ ] Leaderboard + CockroachDB to add the leaderboard
+- [ ] Leaderboard + CockroachDB to add the leaderboard
 
-[ ] Change timer, remove laps, and loop the game
+- [ ] Change timer, remove laps, and loop the game
