@@ -1,3 +1,4 @@
+const quizContainer = document.querySelector(".quiz");
 const questionDiv = document.querySelector(".question");
 const leftSpan = document.querySelector(".left-answer");
 const rightSpan = document.querySelector(".right-answer");
@@ -9,6 +10,7 @@ let qno;
 let quizData = [];
 
 const makeQuiz = () => {
+  quizContainer.classList.add('active');
   // console.log(quizData);
   // console.log(quizData[qno]);
   questionDiv.innerHTML = quizData[qno].question;
@@ -24,13 +26,14 @@ const getQuiz = async () => {
   const data = await resp.json();
   const quizArray = data.results;
   quizData = quizArray;
-  makeQuiz();
+  //makeQuiz();
 };
 
 submitBtn.addEventListener("click", (e) => {
   if (leftRadio.checked) {
     qno++;
-    makeQuiz();
+    quizContainer.classList.remove('active');
+    run = true;
   }
 });
 

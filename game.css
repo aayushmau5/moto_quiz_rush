@@ -1,8 +1,7 @@
 body {
-  background: #222;
-  font-family: 'Press Start 2P', monospace;
-  font-smooth: never;
+  background: skyblue;
   height: 98vh;
+  font-family: "Poppins", sans-serif;
 }
 
 /* UI */
