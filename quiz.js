@@ -5,6 +5,7 @@ const rightSpan = document.querySelector(".right-answer");
 const leftRadio = document.querySelector(".left");
 const rightRadio = document.querySelector(".right");
 const submitBtn = document.querySelector(".submit");
+const seconds = document.querySelector(".seconds");
 
 let qno;
 let quizData = [];
@@ -14,9 +15,22 @@ const selectRandom = () => {
   return Math.round(Math.random());
 };
 
+const setTimer = () => {
+  let timeVal = 9;
+  const interval = setInterval(() => {
+    seconds.innerHTML = timeVal;
+    timeVal--;
+  },1000);
+  setTimeout(() => {
+    clearInterval(interval);
+    lost();
+  },10000);
+}
+
 const makeQuiz = () => {
   quizContainer.classList.add("active");
   submitBtn.disabled = false;
+  setTimer();
   questionDiv.innerHTML = quizData[qno].question;
   const random = selectRandom();
   if (random === 0) {
