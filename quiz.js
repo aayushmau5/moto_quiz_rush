@@ -9,15 +9,27 @@ const submitBtn = document.querySelector(".submit");
 let qno;
 let quizData = [];
 
+const selectRandom = () => {
+  // 0 or 1
+  return Math.round(Math.random());
+};
+
 const makeQuiz = () => {
-  quizContainer.classList.add('active');
-  // console.log(quizData);
-  // console.log(quizData[qno]);
+  quizContainer.classList.add("active");
+  submitBtn.disabled = false;
   questionDiv.innerHTML = quizData[qno].question;
-  leftSpan.innerHTML = quizData[qno].correct_answer;
-  leftRadio.value = quizData[qno].correct_answer;
-  rightSpan.innerHTML = quizData[qno].incorrect_answers[0];
-  rightRadio.value = quizData[qno].incorrect_answers[0];
+  const random = selectRandom();
+  if (random === 0) {
+    leftSpan.innerHTML = quizData[qno].correct_answer;
+    leftRadio.value = quizData[qno].correct_answer;
+    rightSpan.innerHTML = quizData[qno].incorrect_answers[0];
+    rightRadio.value = quizData[qno].incorrect_answers[0];
+  } else {
+    rightSpan.innerHTML = quizData[qno].correct_answer;
+    rightRadio.value = quizData[qno].correct_answer;
+    leftSpan.innerHTML = quizData[qno].incorrect_answers[0];
+    leftRadio.value = quizData[qno].incorrect_answers[0];
+  }
 };
 
 const getQuiz = async () => {
@@ -26,14 +38,29 @@ const getQuiz = async () => {
   const data = await resp.json();
   const quizArray = data.results;
   quizData = quizArray;
-  //makeQuiz();
 };
 
 submitBtn.addEventListener("click", (e) => {
-  if (leftRadio.checked) {
+  if (leftRadio.checked && leftRadio.value === quizData[qno].correct_answer) {
     qno++;
-    quizContainer.classList.remove('active');
+    quizContainer.classList.remove("active");
+    submitBtn.disabled = true;
     run = true;
+    inGame = true;
+  } else if (
+    rightRadio.checked &&
+    rightRadio.value === quizData[qno].correct_answer
+  ) {
+    qno++;
+    quizContainer.classList.remove("active");
+    submitBtn.disabled = true;
+    run = true;
+    inGame = true;
+  } else {
+    quizContainer.classList.remove("active");
+    submitBtn.disabled = true;
+    run = true;
+    lost();
   }
 });
 
