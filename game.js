@@ -539,6 +539,7 @@ function update(step) {
       if (inGame) {
         speed = 0;
         run = false;
+        inGame = false;
         makeQuiz();
       }
 
@@ -692,6 +693,26 @@ function reset() {
   hud.style.display = "none";
   home.style.display = "block";
   tacho.style.display = "block";
+}
+
+function lost() {
+  inGame = false;
+
+  start = timestamp();
+  countDown = map[map.length - 2].to / 130 + 10;
+
+  pos = 0;
+  cloudOffset = 0;
+  sectionProg = 0;
+  mapIndex = 0;
+
+  for (let line of lines) line.curve = line.y = 0;
+
+  text.innerText = "You Lost the game";
+
+  road.style.opacity = 0.4;
+  hud.style.display = "none";
+  home.style.display = "block";
 }
 
 function updateHighscore() {
