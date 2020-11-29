@@ -5,9 +5,7 @@ A race game with a twist of quiz.
 
 - [ ] Random order of answers
 
-- [ ] Pause functionality
-
-- [ ] Landing Page
+- [ ] Game Over
 
 - [ ] Overall theming of the website
 
