@@ -9,28 +9,17 @@ const seconds = document.querySelector(".seconds");
 
 let qno;
 let quizData = [];
+let interval;
+let timeVal;
 
 const selectRandom = () => {
   // 0 or 1
   return Math.round(Math.random());
 };
 
-const setTimer = () => {
-  let timeVal = 9;
-  const interval = setInterval(() => {
-    seconds.innerHTML = timeVal;
-    timeVal--;
-  },1000);
-  setTimeout(() => {
-    clearInterval(interval);
-    lost();
-  },10000);
-}
-
 const makeQuiz = () => {
   quizContainer.classList.add("active");
   submitBtn.disabled = false;
-  setTimer();
   questionDiv.innerHTML = quizData[qno].question;
   const random = selectRandom();
   if (random === 0) {
@@ -44,6 +33,7 @@ const makeQuiz = () => {
     leftSpan.innerHTML = quizData[qno].incorrect_answers[0];
     leftRadio.value = quizData[qno].incorrect_answers[0];
   }
+  setTimer(false);
 };
 
 const getQuiz = async () => {
